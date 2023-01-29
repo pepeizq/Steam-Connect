@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Steam Connect (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Steam Connect (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
