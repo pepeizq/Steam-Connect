@@ -90,6 +90,15 @@ namespace Interfaz
                     }
                 }
             }
+
+            if (ObjetosVentana.gridOpciones.Visibility == Visibility.Visible)
+            {
+                ObjetosVentana.gridAccesosDirectos.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ObjetosVentana.gridAccesosDirectos.Visibility = Visibility.Visible;
+            }
         }
 
         public static void CreadorItems(string imagenEnlace, string nombre)

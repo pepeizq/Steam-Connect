@@ -124,13 +124,16 @@
     <value>Argumentos</value>
   </data>
   <data name="BattlenetInstalledGamesMessage.Text" xml:space="preserve">
-    <value>Recuerda, para ejecutar el juego desde una tile debes tenerlo instalado en la aplicación de Battle.net.</value>
+    <value>Recuerda, para ejecutar el juego desde Steam debes tenerlo instalado en la aplicación de Battle.net.</value>
   </data>
   <data name="Bottom.Text" xml:space="preserve">
     <value>Abajo</value>
   </data>
   <data name="Center.Text" xml:space="preserve">
     <value>Centrada</value>
+  </data>
+  <data name="ConnectAddGame.Text" xml:space="preserve">
+    <value>Añadir Accesos Directos</value>
   </data>
   <data name="Contact.Text" xml:space="preserve">
     <value>Contactar</value>
@@ -146,6 +149,9 @@
   </data>
   <data name="Fill.Text" xml:space="preserve">
     <value>Rellenar</value>
+  </data>
+  <data name="GamesLoaded.Text" xml:space="preserve">
+    <value>juegos cargados</value>
   </data>
   <data name="ImageBig.Text" xml:space="preserve">
     <value>Imagen Grande</value>
@@ -226,7 +232,7 @@
     <value>Orientación Vertical</value>
   </data>
   <data name="PresentationMessage.Text" xml:space="preserve">
-    <value>Selecciona la plataforma donde tienes el juego para añadir como tile:</value>
+    <value>Selecciona la plataforma donde tienes el juego para añadir en Steam:</value>
   </data>
   <data name="Right.Text" xml:space="preserve">
     <value>Derecha</value>
@@ -237,38 +243,11 @@
   <data name="SourceUrl.Text" xml:space="preserve">
     <value>Enlace Imagen:</value>
   </data>
-  <data name="SteamAnyGames.Text" xml:space="preserve">
-    <value>Cualquier juego</value>
-  </data>
-  <data name="SteamAnyGamesMessage.Text" xml:space="preserve">
-    <value>Introduce el enlace de cualquier juego en Steam:</value>
-  </data>
-  <data name="SteamAnyGamesMessage2.Text" xml:space="preserve">
-    <value>Recuerda, para ejecutar el juego desde una tile debes tener el juego en Steam.</value>
-  </data>
-  <data name="SteamInstalledGames.Text" xml:space="preserve">
-    <value>Juegos instalados</value>
-  </data>
   <data name="Stretch.Text" xml:space="preserve">
     <value>Estiramiento</value>
   </data>
   <data name="Stretch2.Text" xml:space="preserve">
     <value>Estirada</value>
-  </data>
-  <data name="TileAddGame.Text" xml:space="preserve">
-    <value>Añadir Tile del Juego</value>
-  </data>
-  <data name="TileBig.Text" xml:space="preserve">
-    <value>Tile Grande</value>
-  </data>
-  <data name="TileMedium.Text" xml:space="preserve">
-    <value>Tile Mediana</value>
-  </data>
-  <data name="TileSmall.Text" xml:space="preserve">
-    <value>Tile Pequeña</value>
-  </data>
-  <data name="TileWide.Text" xml:space="preserve">
-    <value>Tile Ancha</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
     <value>Título</value>

@@ -112,8 +112,8 @@ namespace Steam_Connect
             //-------------------------------------------------------------------
 
             ObjetosVentana.tbAccesosDirectosCargados = tbAccesosDirectosCargados;
-            ObjetosVentana.tbAccesosDirectosAñadir = tbAccesosDirectosAnadir;
             ObjetosVentana.botonAccesosDirectosAñadir = botonAccesosDirectosAnadir;
+            ObjetosVentana.pbAccesosDirectos = pbAccesosDirectos;
 
             //-------------------------------------------------------------------
 
@@ -205,8 +205,8 @@ namespace Steam_Connect
             //-------------------------------------------------------------------
 
             public static TextBlock tbAccesosDirectosCargados { get; set; }
-            public static TextBlock tbAccesosDirectosAñadir { get; set; }
             public static Button botonAccesosDirectosAñadir { get; set; }
+            public static ProgressBar pbAccesosDirectos { get; set; }
 
             //-------------------------------------------------------------------
 
@@ -394,6 +394,39 @@ namespace Steam_Connect
             BarraTitulo.CambiarTitulo(null);
             ScrollViewers.EnseñarSubir(svEpicGamesJuegosInstalados);
             EpicGames.CargarJuegosInstalados();
+        }
+
+        public static void ActivarDesactivarGridviews(bool estado)
+        {
+            foreach (GridViewItem item in ObjetosVentana.gvGOGJuegosInstalados.Items)
+            {
+                item.IsEnabled = estado;
+            }
+
+            foreach (GridViewItem item in ObjetosVentana.gvEAPlayJuegosInstalados.Items)
+            {
+                item.IsEnabled = estado;
+            }
+
+            foreach (GridViewItem item in ObjetosVentana.gvUbisoftJuegosInstalados.Items)
+            {
+                item.IsEnabled = estado;
+            }
+
+            foreach (GridViewItem item in ObjetosVentana.gvBattlenetJuegosInstalados.Items)
+            {
+                item.IsEnabled = estado;
+            }
+
+            foreach (GridViewItem item in ObjetosVentana.gvAmazonJuegosInstalados.Items)
+            {
+                item.IsEnabled = estado;
+            }
+
+            foreach (GridViewItem item in ObjetosVentana.gvEpicGamesJuegosInstalados.Items)
+            {
+                item.IsEnabled = estado;
+            }
         }
     }
 }

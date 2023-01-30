@@ -1,15 +1,14 @@
 ﻿using Force.Crc32;
-using Herramientas;
 using Microsoft.UI.Xaml;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using ValveKeyValue;
-using Windows.Web.Http;
+using Windows.System;
 using static Steam_Connect.MainWindow;
 
 namespace Interfaz
@@ -21,6 +20,8 @@ namespace Interfaz
         public static void Cargar()
         {
             ObjetosVentana.botonAccesosDirectosAñadir.Click += Añadir;
+            ObjetosVentana.botonAccesosDirectosAñadir.PointerEntered += Animaciones.EntraRatonBoton2;
+            ObjetosVentana.botonAccesosDirectosAñadir.PointerExited += Animaciones.SaleRatonBoton2;
 
             //-------------------------------------
 
@@ -38,7 +39,7 @@ namespace Interfaz
             ObjetosVentana.botonAccesosDirectosAñadir.Tag = datos;
         }
 
-        public static void Modificar(SteamAccesoDirecto juego, bool estado, string enlaceImagen)
+        public static void Modificar(SteamAccesoDirecto juego, bool estado)
         {
             List<SteamAccesoDirecto> datos = ObjetosVentana.botonAccesosDirectosAñadir.Tag as List<SteamAccesoDirecto>;
 
@@ -66,43 +67,102 @@ namespace Interfaz
             }
 
             ObjetosVentana.tbAccesosDirectosCargados.Text = datos.Count.ToString();
+
+            if (datos.Count > 0)
+            {
+                ObjetosVentana.botonAccesosDirectosAñadir.IsEnabled = true;
+            }
+            else
+            {
+                ObjetosVentana.botonAccesosDirectosAñadir.IsEnabled = false;
+            }
         }
 
-        public static void Añadir(object sender, RoutedEventArgs e)
+        public static bool ComprobarAcceso(string nombre, string ejecutable)
         {
+            List<SteamAccesoDirecto> datos = ObjetosVentana.botonAccesosDirectosAñadir.Tag as List<SteamAccesoDirecto>;
+
+            foreach (SteamAccesoDirecto acceso in datos)
+            {
+                if (acceso.appname == nombre && acceso.exe == ejecutable)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static async void Añadir(object sender, RoutedEventArgs e)
+        {
+            ActivarDesactivar(false);
+            ObjetosVentana.pbAccesosDirectos.Visibility = Visibility.Visible;
+            ObjetosVentana.pbAccesosDirectos.Value = 0;
+            await Task.Delay(100);
+
             List<SteamAccesoDirecto> datos = ObjetosVentana.botonAccesosDirectosAñadir.Tag as List<SteamAccesoDirecto>;
 
             string ficheroAccesos = GenerarRutaAccesos();
             string carpetaImagenes = ficheroAccesos.Replace("\\shortcuts.vdf", null);
             carpetaImagenes = carpetaImagenes + "\\grid";
 
+            int i = 0;
             foreach (SteamAccesoDirecto acceso in datos)
             {
                 if (acceso.icon != null)
                 {
+                    string enlaceImagenGrid = null;
+                    string enlaceImagenLogo = null;
+                    string enlaceImagenHero = null;
+
                     if (acceso.icon.Contains("pepesteam_") == true)
                     {
                         string id = acceso.icon.Replace("pepesteam_", null);
-                        acceso.icon = null;
 
-                        string enlaceImagenGrid = dominioImagenes + "/steam/apps/" + id + "/library_600x900.jpg";
-                        string enlaceImagenLogo = dominioImagenes + "/steam/apps/" + id + "/logo.png";
-                        string enlaceImagenHero = dominioImagenes + "/steam/apps/" + id + "/library_hero.jpg";
-
-                        string idImagenes = GenerarIdImagen(acceso.appname, acceso.exe).ToString();
-
-                        DescargarImagen(enlaceImagenGrid, carpetaImagenes + "\\" + idImagenes + "p.png");
-                        DescargarImagen(enlaceImagenLogo, carpetaImagenes + "\\" + idImagenes + "_logo.png");
-                        DescargarImagen(enlaceImagenHero, carpetaImagenes + "\\" + idImagenes + "_hero.jpg");
+                        enlaceImagenGrid = dominioImagenes + "/steam/apps/" + id + "/library_600x900.jpg";
+                        enlaceImagenLogo = dominioImagenes + "/steam/apps/" + id + "/logo.png";
+                        enlaceImagenHero = dominioImagenes + "/steam/apps/" + id + "/library_hero.jpg";          
                     }
-                }               
+                    else
+                    {
+                        enlaceImagenGrid = acceso.icon;                      
+                    }
+
+                    acceso.icon = null;
+
+                    string idImagenes = GenerarIdImagen(acceso.appname, acceso.exe).ToString();
+
+                    if (enlaceImagenGrid != null)
+                    {
+                        DescargarImagen(enlaceImagenGrid, carpetaImagenes + "\\" + idImagenes + "p.png");
+                    }
+                    
+                    if (enlaceImagenLogo != null)
+                    {
+                        DescargarImagen(enlaceImagenLogo, carpetaImagenes + "\\" + idImagenes + "_logo.png");
+                    }
+                
+                    if (enlaceImagenHero != null)
+                    {
+                        DescargarImagen(enlaceImagenHero, carpetaImagenes + "\\" + idImagenes + "_hero.jpg");
+                    }                  
+                }
+
+                ObjetosVentana.pbAccesosDirectos.Value = Convert.ToDouble((100 / datos.Count) * i);
+                i += 1;
             }
 
+            using FileStream stream = File.OpenWrite(ficheroAccesos);
 
-            using var stream = File.OpenWrite(ficheroAccesos);
-
-            var kv = KVSerializer.Create(KVSerializationFormat.KeyValues1Binary);
+            KVSerializer kv = KVSerializer.Create(KVSerializationFormat.KeyValues1Binary);
             kv.Serialize(stream, datos, "shortcuts");
+
+            await Launcher.LaunchUriAsync(new Uri("steam://ExitSteam"));
+            await Task.Delay(1000);
+            await Launcher.LaunchUriAsync(new Uri("steam://open/games"));
+
+            ObjetosVentana.pbAccesosDirectos.Visibility = Visibility.Collapsed;
+            ActivarDesactivar(true);
         }
 
         private static string GenerarRutaAccesos()
@@ -142,15 +202,22 @@ namespace Interfaz
 
         private static async void DescargarImagen(string enlace, string ubicacionynombre)
         {
-            System.Net.Http.HttpClient cliente = new System.Net.Http.HttpClient();
+            HttpClient cliente = new HttpClient();
             cliente.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1");
-            byte[] ficheroBytes = await cliente.GetByteArrayAsync(enlace);
-            File.WriteAllBytes(ubicacionynombre, ficheroBytes);
+            
+            try
+            {
+                byte[] ficheroBytes = await cliente.GetByteArrayAsync(enlace);
+                File.WriteAllBytes(ubicacionynombre, ficheroBytes);
+            }
+            catch { }
+        }
 
-            //var httpResult = await httpClient.GetAsync(new Uri(enlace));
-            //using var resultStream = await httpResult.Content.stea;
-            //using var fileStream = File.Create(pathToSave);
-            //resultStream.CopyTo(fileStream);
+        private static void ActivarDesactivar(bool estado)
+        {
+            ObjetosVentana.botonAccesosDirectosAñadir.IsEnabled = estado;
+
+            ActivarDesactivarGridviews(estado);
         }
     }
 
@@ -165,5 +232,6 @@ namespace Interfaz
         public int AllowDesktopConfig { get; set; }
         public int AllowOverlay { get; set; }
         public int LastPlayTime { get; set; }
+        //public List<string> tags { get; set; }
     }
 }

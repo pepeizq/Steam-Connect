@@ -104,7 +104,8 @@ namespace Plataformas
                                 RequestedTheme = ElementTheme.Dark,
                                 OnContent = string.Empty,
                                 OffContent = string.Empty,
-                                Margin = new Thickness(10, 0, 0, 0)
+                                Margin = new Thickness(10, 0, 0, 0),
+                                IsOn = AccesosDirectos.ComprobarAcceso(juego.nombre, juego.ejecutable)
                             };
 
                             sp.Children.Add(ts);
@@ -187,12 +188,16 @@ namespace Plataformas
                 exe = juego.ejecutable
             };
 
-            if (juego.idSteam != null)
+            if (juego.idSteam != string.Empty && juego.imagenGrande == string.Empty)
             {
                 acceso.icon = "pepesteam_" + juego.idSteam;
             }
+            else
+            {
+                acceso.icon = juego.imagenGrande;
+            }
 
-            AccesosDirectos.Modificar(acceso, ts.IsOn, juego.imagenGrande);
+            AccesosDirectos.Modificar(acceso, ts.IsOn);
         }
     }
 

@@ -12,6 +12,17 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\connect_logo.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-100.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-125.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-150.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-200.png" />
+    <Content Remove="Assets\Logos\BadgeLogo.scale-400.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-100.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-125.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-150.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-200.png" />
+    <Content Remove="Assets\Logos\StoreLogo.scale-400.png" />
     <Content Remove="Assets\Plataformas\logo_amazon.png" />
     <Content Remove="Assets\Plataformas\logo_battlenet.png" />
     <Content Remove="Assets\Plataformas\logo_battlenet_completo.png" />
@@ -22,15 +33,8 @@
     <Content Remove="Assets\Plataformas\logo_ubisoft.png" />
     <Content Remove="Assets\Plataformas\logo_ubisoft_completo.png" />
   </ItemGroup>
-
   <ItemGroup>
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <None Remove="Plataformas\GOG.cs~RF4a103710.TMP" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,9 +12,9 @@
     Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>Steam Connect</DisplayName>
+    <DisplayName>pepeizq&apos;s Steam Connect</DisplayName>
     <PublisherDisplayName>pepei</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\Logos\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -31,13 +31,18 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Steam Connect"
-        Description="Steam Connect"
-        BackgroundColor="transparent"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        DisplayName="pepeizq&apos;s Steam Connect"
+        Description="https://pepeizqapps.com/"
+        BackgroundColor="#00003c"
+        Square150x150Logo="Assets\Logos\Square150x150Logo.png"
+        Square44x44Logo="Assets\Logos\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Logos\Wide310x150Logo.png"  ShortName="Steam Connect" Square71x71Logo="Assets\Logos\SmallTile.png" Square310x310Logo="Assets\Logos\LargeTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\Logos\SplashScreen.png"  BackgroundColor="#00003c"/>
+        <uap:LockScreen BadgeLogo="Assets\Logos\BadgeLogo.png" Notification="badge"/>
       </uap:VisualElements>
     </Application>
   </Applications>
