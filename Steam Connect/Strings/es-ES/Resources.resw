@@ -150,7 +150,10 @@
   <data name="Fill.Text" xml:space="preserve">
     <value>Rellenar</value>
   </data>
-  <data name="GamesLoaded.Text" xml:space="preserve">
+  <data name="GameLoaded" xml:space="preserve">
+    <value>juego cargado</value>
+  </data>
+  <data name="GamesLoaded" xml:space="preserve">
     <value>juegos cargados</value>
   </data>
   <data name="ImageBig.Text" xml:space="preserve">
@@ -239,6 +242,12 @@
   </data>
   <data name="SelectFolderInstalledGames.Text" xml:space="preserve">
     <value>Selecciona la carpeta donde tengas instalados los juegos:</value>
+  </data>
+  <data name="ShortcutMessage" xml:space="preserve">
+    <value>El acceso directo ha sido añadido en Steam</value>
+  </data>
+  <data name="ShortcutsMessage" xml:space="preserve">
+    <value>Los accesos directos han sido añadidos en Steam</value>
   </data>
   <data name="SourceUrl.Text" xml:space="preserve">
     <value>Enlace Imagen:</value>

@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics;
 using Windows.Foundation.Metadata;
 using Windows.UI.Notifications;
-//using static Principal.MainWindow;
+using static Steam_Connect.MainWindow;
 
 namespace Herramientas
 {
@@ -26,7 +26,7 @@ namespace Herramientas
 
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
             {
-                //notificacion.XamlRoot = ObjetosVentana.ventana.Content.XamlRoot;
+                notificacion.XamlRoot = ObjetosVentana.ventana.Content.XamlRoot;
             }
 
             ContentDialogResult resultado = await notificacion.ShowAsync();

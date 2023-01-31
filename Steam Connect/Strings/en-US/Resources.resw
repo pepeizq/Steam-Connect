@@ -150,7 +150,10 @@
   <data name="Fill.Text" xml:space="preserve">
     <value>Fill</value>
   </data>
-  <data name="GamesLoaded.Text" xml:space="preserve">
+  <data name="GameLoaded" xml:space="preserve">
+    <value>game loaded</value>
+  </data>
+  <data name="GamesLoaded" xml:space="preserve">
     <value>games loaded</value>
   </data>
   <data name="ImageBig.Text" xml:space="preserve">
@@ -239,6 +242,12 @@
   </data>
   <data name="SelectFolderInstalledGames.Text" xml:space="preserve">
     <value>Select the folder where you have the games installed:</value>
+  </data>
+  <data name="ShortcutMessage" xml:space="preserve">
+    <value>The shortcut has been added on Steam</value>
+  </data>
+  <data name="ShortcutsMessage" xml:space="preserve">
+    <value>Shortcuts have been added on Steam</value>
   </data>
   <data name="SourceUrl.Text" xml:space="preserve">
     <value>Image Url:</value>

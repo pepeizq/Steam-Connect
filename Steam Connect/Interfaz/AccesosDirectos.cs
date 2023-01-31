@@ -1,6 +1,8 @@
 ﻿using Force.Crc32;
+using Herramientas;
 using Microsoft.UI.Xaml;
 using Microsoft.Win32;
+using Microsoft.Windows.ApplicationModel.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -76,6 +78,17 @@ namespace Interfaz
             {
                 ObjetosVentana.botonAccesosDirectosAñadir.IsEnabled = false;
             }
+
+            ResourceLoader recursos = new ResourceLoader();
+
+            if (datos.Count == 1)
+            {
+                ObjetosVentana.tbAccesosDirectosCargados.Text = datos.Count.ToString() + " " + recursos.GetString("GameLoaded");
+            }
+            else if (datos.Count > 1)
+            {
+                ObjetosVentana.tbAccesosDirectosCargados.Text = datos.Count.ToString() + " " + recursos.GetString("GamesLoaded");
+            }
         }
 
         public static bool ComprobarAcceso(string nombre, string ejecutable)
@@ -98,7 +111,6 @@ namespace Interfaz
             ActivarDesactivar(false);
             ObjetosVentana.pbAccesosDirectos.Visibility = Visibility.Visible;
             ObjetosVentana.pbAccesosDirectos.Value = 0;
-            await Task.Delay(100);
 
             List<SteamAccesoDirecto> datos = ObjetosVentana.botonAccesosDirectosAñadir.Tag as List<SteamAccesoDirecto>;
 
@@ -163,6 +175,17 @@ namespace Interfaz
 
             ObjetosVentana.pbAccesosDirectos.Visibility = Visibility.Collapsed;
             ActivarDesactivar(true);
+
+            ResourceLoader recursos = new ResourceLoader();
+
+            if (datos.Count == 1)
+            {
+                Notificaciones.Toast(recursos.GetString("ShortcutMessage"));
+            }
+            else if (datos.Count > 1)
+            {
+                Notificaciones.Toast(recursos.GetString("ShortcutsMessage"));
+            }           
         }
 
         private static string GenerarRutaAccesos()
