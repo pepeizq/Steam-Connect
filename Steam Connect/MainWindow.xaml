@@ -94,16 +94,11 @@
             </NavigationView.FooterMenuItems>
 
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                
                 <Grid.Background>
                     <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.8"/>
                 </Grid.Background>
 
-                <Grid Grid.Row="0">
+                <Grid>
                     <Grid x:Name="gridPresentacion" Visibility="Collapsed">
                         <ScrollViewer x:Name="svPresentacion" VerticalScrollBarVisibility="Visible" Padding="0,0,15,0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -133,43 +128,15 @@
                     </Grid>
 
                     <Grid x:Name="gridEAPlay" Visibility="Collapsed">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                        <ScrollViewer x:Name="svEAPlayJuegosInstalados" VerticalScrollBarVisibility="Visible" Padding="0,0,15,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                            <StackPanel Orientation="Vertical">
+                                <ProgressRing x:Name="prEAPlayJuegosInstalados" IsIndeterminate="True" Foreground="{StaticResource ColorFuente}" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed" Margin="30"/>
 
-                            <StackPanel Grid.Row="0" Orientation="Vertical" Padding="30,30,30,0">
-                                <TextBlock x:Uid="SelectFolderInstalledGames" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
+                                <controls:AdaptiveGridView x:Name="gvEAPlayJuegosInstalados" DesiredWidth="250" Padding="20" StretchContentForSingleRow="False"/>
 
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Button x:Name="botonEAPlayBuscarJuegosInstalados" Grid.Column="0" Background="{StaticResource ColorPrimario}" Padding="15,8">
-                                        <Button.Content>
-                                            <StackPanel Orientation="Horizontal">
-                                                <iconos:FontAwesome Icon="Solid_Folder" Foreground="{StaticResource ColorFuente}"/>
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-
-                                    <TextBlock x:Name="tbEAPlayCarpetaJuegosInstalados" Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center"/>
-                                </Grid>
+                                <TextBlock x:Name="tbEAPlayMensajeNoJuegos" x:Uid="NoGamesDetected" Foreground="{StaticResource ColorFuente}" Margin="30" Visibility="Collapsed"/>
                             </StackPanel>
-
-                            <ScrollViewer x:Name="svEAPlayJuegosInstalados" Grid.Row="1" VerticalScrollBarVisibility="Visible" Padding="0,0,15,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                                <StackPanel Orientation="Vertical">
-                                    <ProgressRing x:Name="prEAPlayJuegosInstalados" IsIndeterminate="True" Foreground="{StaticResource ColorFuente}" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed" Margin="30"/>
-
-                                    <controls:AdaptiveGridView x:Name="gvEAPlayJuegosInstalados" DesiredWidth="250" Padding="20" StretchContentForSingleRow="False"/>
-
-                                    <TextBlock x:Name="tbEAPlayMensajeNoJuegos" x:Uid="NoGamesDetected" Foreground="{StaticResource ColorFuente}" Margin="30" Visibility="Collapsed"/>
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
+                        </ScrollViewer>
                     </Grid>
 
                     <Grid x:Name="gridUbisoft" Visibility="Collapsed">
@@ -226,14 +193,29 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <StackPanel x:Name="spBattlenetJuegosInstaladosMensaje" Grid.Row="0" Orientation="Horizontal" Margin="30,30,30,10" Padding="20" CornerRadius="5" Visibility="Collapsed">
-                                <StackPanel.Background>
-                                    <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
-                                </StackPanel.Background>
+                            <Grid x:Name="gridBattlenetMensajeSiJuegos" Grid.Row="0" Margin="25" Padding="20" CornerRadius="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                                <iconos:FontAwesome Icon="Solid_CircleExclamation" Foreground="{StaticResource ColorFuente}" Margin="0,0,15,0"/>
-                                <TextBlock x:Uid="BattlenetInstalledGamesMessage" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,0" TextWrapping="Wrap"/>
-                            </StackPanel>
+                                <Grid.Background>
+                                    <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                </Grid.Background>
+
+                                <StackPanel Orientation="Vertical" Grid.Column="0" Margin="5,0,20,0">
+                                    <TextBlock x:Uid="BattlenetInstalledGamesMessage1" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" FontWeight="SemiBold"/>
+                                    <TextBlock x:Uid="BattlenetInstalledGamesMessage2" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                </StackPanel>
+
+                                <interfaz:Button2 x:Name="botonBattlenetCerrarMensajeSiJuegos" Grid.Column="1" Background="{StaticResource ColorPrimario}" Padding="15,12" RequestedTheme="Light" BorderThickness="0" CornerRadius="5">
+                                    <interfaz:Button2.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <iconos:FontAwesome Icon="Solid_Xmark" Foreground="{StaticResource ColorFuente}" FontSize="15"/>
+                                        </StackPanel>
+                                    </interfaz:Button2.Content>
+                                </interfaz:Button2>
+                            </Grid>
 
                             <ScrollViewer x:Name="svBattlenetJuegosInstalados" Grid.Row="1" VerticalScrollBarVisibility="Visible" Padding="0,0,15,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                                 <StackPanel Orientation="Vertical">
@@ -307,42 +289,122 @@
                     </Grid>
 
                     <Grid x:Name="gridOpciones" Visibility="Collapsed">
-                        <ScrollViewer x:Name="svOpciones" VerticalScrollBarVisibility="Visible" Padding="0,0,15,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                            <StackPanel Orientation="Vertical" Padding="40">
-                                <Expander IsExpanded="True" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" RequestedTheme="Dark" CornerRadius="5" Margin="0,0,0,40">
-                                    <Expander.Header>
-                                        <TextBlock x:Uid="OptionsLanguage" Foreground="{StaticResource ColorFuente}" Margin="10,0,0,0"/>
-                                    </Expander.Header>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                                    <Expander.Background>
-                                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
-                                    </Expander.Background>
+                        <StackPanel x:Name="spOpcionesBotones" Grid.Column="0" Orientation="Vertical" Padding="40" HorizontalAlignment="Stretch" MinWidth="300">
+                            <interfaz:Button2 Background="Transparent" Padding="18,15" RequestedTheme="Light" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" CornerRadius="5">
+                                <interfaz:Button2.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <StackPanel Orientation="Vertical" Padding="10">
-                                        <TextBlock x:Uid="OptionsLanguageInfo" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
-                                        <interfaz:ComboBox2 x:Name="cbOpcionesIdioma" RequestedTheme="Dark" CornerRadius="5"/>
+                                        <Image Source="Assets/Plataformas/logo_eaplay.png" Grid.Column="0" MaxHeight="18" MaxWidth="18" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="EA Play" Grid.Column="1" Foreground="{StaticResource ColorFuente}" Margin="20,0,0,0"/>
+                                    </Grid>
+                                </interfaz:Button2.Content>
+                            </interfaz:Button2>
+                            <interfaz:Button2 Background="Transparent" Padding="18,15" RequestedTheme="Light" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" CornerRadius="5" Margin="0,10,0,0">
+                                <interfaz:Button2.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <iconos:FontAwesome Icon="Solid_Computer" Grid.Column="0" Foreground="{StaticResource ColorFuente}" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="OptionsApp" Grid.Column="1" Foreground="{StaticResource ColorFuente}" Margin="20,0,0,0"/>
+                                    </Grid>
+                                </interfaz:Button2.Content>
+                            </interfaz:Button2>
+                        </StackPanel>
+
+                        <ScrollViewer x:Name="svOpciones" Grid.Column="1" VerticalScrollBarVisibility="Visible" Padding="0,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                            <StackPanel x:Name="spOpcionesPestanas" Orientation="Vertical" Padding="40">
+                                <StackPanel Orientation="Vertical" Visibility="Collapsed">
+                                    <StackPanel Orientation="Vertical" Padding="30" CornerRadius="5">
+                                        <StackPanel.Background>
+                                            <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                        </StackPanel.Background>
+
+                                        <TextBlock x:Uid="SelectFolderInstalledGames" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <interfaz:Button2 x:Name="botonEAPlayBuscarJuegosInstalados" Grid.Column="0" Background="{StaticResource ColorPrimario}" Padding="15,10" CornerRadius="5">
+                                                <interfaz:Button2.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <iconos:FontAwesome Icon="Solid_Folder" Foreground="{StaticResource ColorFuente}"/>
+                                                    </StackPanel>
+                                                </interfaz:Button2.Content>
+                                            </interfaz:Button2>
+
+                                            <TextBlock x:Name="tbEAPlayCarpetaJuegosInstalados" Grid.Column="1" TextWrapping="Wrap" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                                        </Grid>
                                     </StackPanel>
-                                </Expander>
+                                </StackPanel>
 
-                                <Expander IsExpanded="True" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" RequestedTheme="Dark" CornerRadius="5">
-                                    <Expander.Header>
-                                        <TextBlock x:Uid="OptionsApp" Foreground="{StaticResource ColorFuente}" Margin="10,0,0,0"/>
-                                    </Expander.Header>
+                                <StackPanel Orientation="Vertical" Visibility="Collapsed">
+                                    <Grid Padding="30" CornerRadius="5">
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                        </Grid.Background>
 
-                                    <Expander.Background>
-                                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
-                                    </Expander.Background>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <StackPanel Orientation="Vertical" Padding="10">
-                                        <TextBlock x:Uid="OptionsAppWindowInfo" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
-                                        <interfaz:ComboBox2 x:Name="cbOpcionesPantalla" RequestedTheme="Dark" Margin="0,0,0,25" CornerRadius="5">
+                                        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,20,0">
+                                            <TextBlock x:Uid="OptionsLanguageInfo" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                            <TextBlock x:Uid="OptionsLanguageInfo2" FontSize="13" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                                        </StackPanel>
+
+                                        <interfaz:ComboBox2 x:Name="cbOpcionesIdioma" Grid.Column="1" RequestedTheme="Dark" CornerRadius="5" MinWidth="120"/>
+                                    </Grid>
+
+                                    <Grid Padding="30" CornerRadius="5" Margin="0,5,0,0">
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                        </Grid.Background>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock x:Uid="OptionsAppWindowInfo" Grid.Column="0" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                        <interfaz:ComboBox2 x:Name="cbOpcionesPantalla" Grid.Column="1" RequestedTheme="Dark" CornerRadius="5" MinWidth="120">
                                             <TextBlock x:Uid="OptionsAppWindow1"/>
                                             <TextBlock x:Uid="OptionsAppWindow2"/>
                                             <TextBlock x:Uid="OptionsAppWindow3"/>
                                         </interfaz:ComboBox2>
+                                    </Grid>
 
-                                        <TextBlock x:Uid="OptionsAppCleanInfo" Foreground="{StaticResource ColorFuente}" Margin="0,0,0,20"/>
-                                        <interfaz:Button2 x:Name="botonOpcionesLimpiar" Background="{StaticResource ColorPrimario}" Padding="15,12,15,14" RequestedTheme="Light" BorderThickness="0" CornerRadius="5">
+                                    <Grid Padding="30" CornerRadius="5" Margin="0,5,0,0">
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.6"/>
+                                        </Grid.Background>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,20,0">
+                                            <TextBlock x:Uid="OptionsAppCleanInfo" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                            <TextBlock x:Uid="OptionsAppCleanInfo2" FontSize="13" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                                        </StackPanel>
+
+                                        <interfaz:Button2 x:Name="botonOpcionesLimpiar" Grid.Column="1" Background="{StaticResource ColorPrimario}" Padding="15,12,15,14" RequestedTheme="Light" BorderThickness="0" CornerRadius="5">
                                             <interfaz:Button2.Content>
                                                 <StackPanel Orientation="Horizontal">
                                                     <iconos:FontAwesome Icon="Solid_Trash" Foreground="{StaticResource ColorFuente}" FontSize="15"/>
@@ -350,16 +412,28 @@
                                                 </StackPanel>
                                             </interfaz:Button2.Content>
                                         </interfaz:Button2>
-                                    </StackPanel>
-                                </Expander>
+                                    </Grid>
+                                </StackPanel>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
                 </Grid>
 
-                <Grid x:Name="gridAccesosDirectos" Grid.Row="1">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Padding="20">
-                        <interfaz:Button2 x:Name="botonAccesosDirectosAnadir" Background="{StaticResource ColorPrimario}" Padding="15,12,15,14" RequestedTheme="Light" BorderThickness="0" CornerRadius="5" IsEnabled="False">
+                <Grid x:Name="gridAccesosDirectos">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="30" CornerRadius="5,5,0,0" BorderThickness="2,2,2,0">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.95"/>
+                        </StackPanel.Background>
+
+                        <StackPanel.BorderBrush>
+                            <SolidColorBrush Color="{StaticResource ColorFuente}" Opacity="0.2"/>
+                        </StackPanel.BorderBrush>
+
+                        <interfaz:Button2 x:Name="botonAccesosDirectosAnadir" Background="{StaticResource ColorPrimario}" Padding="15,12" RequestedTheme="Light" CornerRadius="5" BorderThickness="2" IsEnabled="False">
+                            <interfaz:Button2.BorderBrush>
+                                <SolidColorBrush Color="{StaticResource ColorFuente}" Opacity="0.4"/>
+                            </interfaz:Button2.BorderBrush>
+
                             <interfaz:Button2.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <iconos:FontAwesome Icon="Solid_Plus" Foreground="{StaticResource ColorFuente}" FontSize="15"/>
@@ -368,12 +442,83 @@
                             </interfaz:Button2.Content>
                         </interfaz:Button2>
 
-                        <TextBlock x:Name="tbAccesosDirectosCargados" Foreground="{StaticResource ColorFuente}" VerticalAlignment="Center" Margin="20,0"/>
+                        <TextBlock x:Name="tbAccesosDirectosCargados" Foreground="{StaticResource ColorFuente}" VerticalAlignment="Center" Margin="20,0,0,0"/>
 
-                        <ProgressBar x:Name="pbAccesosDirectos" Foreground="{StaticResource ColorFuente}" VerticalAlignment="Center" Width="300" Visibility="Collapsed"/>
+                        <ProgressBar x:Name="pbAccesosDirectos" Foreground="{StaticResource ColorFuente}" VerticalAlignment="Center" Width="300" Margin="20,0,0,0" Visibility="Collapsed"/>
                     </StackPanel>
                 </Grid>
             </Grid>
         </NavigationView>
+
+        <Grid x:Name="gridCierre" Grid.Row="1" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="0.95"/>
+            </Grid.Background>
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" CornerRadius="5" Padding="60,40" BorderThickness="2">
+                    <StackPanel.Background>
+                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="1"/>
+                    </StackPanel.Background>
+
+                    <StackPanel.BorderBrush>
+                        <SolidColorBrush Color="{StaticResource ColorFuente}" Opacity="0.7"/>
+                    </StackPanel.BorderBrush>
+
+                    <TextBlock x:Uid="AppClosingQuestion" FontSize="16" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                        <interfaz:Button2 x:Name="botonCerrarAppSi" Background="{StaticResource ColorPrimario}" Padding="18,12" RequestedTheme="Light" BorderThickness="2" CornerRadius="5">
+                            <interfaz:Button2.BorderBrush>
+                                <SolidColorBrush Color="{StaticResource ColorFuente}" Opacity="0.7"/>
+                            </interfaz:Button2.BorderBrush>
+
+                            <interfaz:Button2.Content>
+                                <Grid>
+                                    <TextBlock x:Uid="AppClosingYes" Foreground="{StaticResource ColorFuente}"/>
+                                </Grid>
+                            </interfaz:Button2.Content>
+                        </interfaz:Button2>
+
+                        <interfaz:Button2 x:Name="botonCerrarAppNo" Background="{StaticResource ColorPrimario}" Padding="18,12" RequestedTheme="Light" BorderThickness="2" CornerRadius="5" Margin="25,0,0,0">
+                            <interfaz:Button2.BorderBrush>
+                                <SolidColorBrush Color="{StaticResource ColorFuente}" Opacity="0.7"/>
+                            </interfaz:Button2.BorderBrush>
+
+                            <interfaz:Button2.Content>
+                                <Grid>
+                                    <TextBlock x:Uid="AppClosingNo" Foreground="{StaticResource ColorFuente}"/>
+                                </Grid>
+                            </interfaz:Button2.Content>
+                        </interfaz:Button2>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" CornerRadius="5" Padding="60,40" BorderThickness="2" Margin="0,50,0,0">
+                    <StackPanel.Background>
+                        <SolidColorBrush Color="{StaticResource ColorPrimario}" Opacity="1"/>
+                    </StackPanel.Background>
+
+                    <StackPanel.BorderBrush>
+                        <SolidColorBrush Color="{StaticResource ColorFuente}" Opacity="0.7"/>
+                    </StackPanel.BorderBrush>
+
+                    <iconos:FontAwesome x:Name="iconoCerrarAppAzar" Foreground="{StaticResource ColorFuente}" FontSize="32" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="tbCerrarAppAzar" Foreground="{StaticResource ColorFuente}" TextWrapping="Wrap" MaxWidth="500" Margin="40,0" VerticalAlignment="Center"/>
+
+                    <interfaz:Button2 x:Name="botonCerrarAppAzar" Background="{StaticResource ColorPrimario}" Padding="18,12" RequestedTheme="Light" BorderThickness="2" CornerRadius="5">
+                        <interfaz:Button2.BorderBrush>
+                            <SolidColorBrush Color="{StaticResource ColorFuente}" Opacity="0.7"/>
+                        </interfaz:Button2.BorderBrush>
+
+                        <interfaz:Button2.Content>
+                            <Grid>
+                                <TextBlock x:Uid="Open" Foreground="{StaticResource ColorFuente}"/>
+                            </Grid>
+                        </interfaz:Button2.Content>
+                    </interfaz:Button2>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

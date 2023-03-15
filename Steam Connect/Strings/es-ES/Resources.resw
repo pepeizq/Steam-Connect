@@ -120,11 +120,32 @@
   <data name="AnyGame" xml:space="preserve">
     <value>Cualquier Juego</value>
   </data>
+  <data name="AppClosingMessage1" xml:space="preserve">
+    <value>Esta aplicación es de código abierto y puedes consultarlo en Github, y si tienes cuenta allí te agradecería una estrella</value>
+  </data>
+  <data name="AppClosingMessage2" xml:space="preserve">
+    <value>Puedes valorar la aplicación en la Tienda de Microsoft, no te voy a decir como debes valorarme pero espero que tengáis en cuenta que soy un único desarrollador con la aplicación</value>
+  </data>
+  <data name="AppClosingMessage3" xml:space="preserve">
+    <value>Puedes consultar las últimas actualizaciones que he lanzado para esta aplicación en mi web, no esperéis kilométricas actualizaciones por que sólo dos manos trabajan en esta aplicación</value>
+  </data>
+  <data name="AppClosingNo.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="AppClosingQuestion.Text" xml:space="preserve">
+    <value>¿Deseas cerrar la aplicación?</value>
+  </data>
+  <data name="AppClosingYes.Text" xml:space="preserve">
+    <value>Sí</value>
+  </data>
   <data name="Arguments.Text" xml:space="preserve">
     <value>Argumentos</value>
   </data>
-  <data name="BattlenetInstalledGamesMessage.Text" xml:space="preserve">
-    <value>Recuerda, para ejecutar el juego desde Steam debes tenerlo instalado en la aplicación de Battle.net.</value>
+  <data name="BattlenetInstalledGamesMessage1.Text" xml:space="preserve">
+    <value>Recuerda</value>
+  </data>
+  <data name="BattlenetInstalledGamesMessage2.Text" xml:space="preserve">
+    <value>Para ejecutar el juego que selecciones desde Widgets, debes tenerlo instalado en la aplicación de Battle.net</value>
   </data>
   <data name="Bottom.Text" xml:space="preserve">
     <value>Abajo</value>
@@ -198,6 +219,9 @@
   <data name="None.Text" xml:space="preserve">
     <value>Ninguno</value>
   </data>
+  <data name="Open.Text" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
   <data name="Options" xml:space="preserve">
     <value>Opciones</value>
   </data>
@@ -208,7 +232,10 @@
     <value>Limpiar Datos</value>
   </data>
   <data name="OptionsAppCleanInfo.Text" xml:space="preserve">
-    <value>Pulsa el botón para limpiar todos los datos generados por la aplicación, se reiniciará la aplicación.</value>
+    <value>Limpiar Datos</value>
+  </data>
+  <data name="OptionsAppCleanInfo2.Text" xml:space="preserve">
+    <value>Todos los datos y ficheros generados por la aplicación serán eliminados, cuando termine se reiniciará la aplicación como si fuera una instalación limpia</value>
   </data>
   <data name="OptionsAppWindow1.Text" xml:space="preserve">
     <value>Defecto</value>
@@ -220,13 +247,13 @@
     <value>Superpuesta</value>
   </data>
   <data name="OptionsAppWindowInfo.Text" xml:space="preserve">
-    <value>Selecciona en que modo quieres que la aplicación se muestre en Windows:</value>
-  </data>
-  <data name="OptionsLanguage.Text" xml:space="preserve">
-    <value>Idioma</value>
+    <value>Modo en el que se mostrará la aplicación en Windows</value>
   </data>
   <data name="OptionsLanguageInfo.Text" xml:space="preserve">
-    <value>Selecciona el idioma de la aplicación, es necesario un reinicio en la aplicación para efectuar el cambio.</value>
+    <value>Idioma de la aplicación</value>
+  </data>
+  <data name="OptionsLanguageInfo2.Text" xml:space="preserve">
+    <value>Es necesario un reinicio en la aplicación para efectuar el cambio</value>
   </data>
   <data name="OrientationHorizontal.Text" xml:space="preserve">
     <value>Orientación Horizontal</value>

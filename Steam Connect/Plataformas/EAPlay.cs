@@ -22,6 +22,8 @@ namespace Plataformas
         public static void Cargar()
         {
             ObjetosVentana.botonEAPlayBuscarJuegosInstalados.Click += BuscarCarpetaJuegosInstalados;
+            ObjetosVentana.botonEAPlayBuscarJuegosInstalados.PointerEntered += Animaciones.EntraRatonBoton2;
+            ObjetosVentana.botonEAPlayBuscarJuegosInstalados.PointerExited += Animaciones.SaleRatonBoton2;
 
             ApplicationDataContainer datos = ApplicationData.Current.LocalSettings;
 

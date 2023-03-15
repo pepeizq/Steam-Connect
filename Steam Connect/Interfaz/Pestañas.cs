@@ -91,7 +91,7 @@ namespace Interfaz
                 }
             }
 
-            if (ObjetosVentana.gridOpciones.Visibility == Visibility.Visible)
+            if (ObjetosVentana.gridOpciones.Visibility == Visibility.Visible || ObjetosVentana.gridPresentacion.Visibility == Visibility.Visible)
             {
                 ObjetosVentana.gridAccesosDirectos.Visibility = Visibility.Collapsed;
             }

@@ -1,4 +1,5 @@
 using CommunityToolkit.WinUI.UI.Controls;
+using FontAwesome6.Fonts;
 using Interfaz;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -17,9 +18,11 @@ namespace Steam_Connect
 
             BarraTitulo.Generar(this);
             BarraTitulo.CambiarTitulo(null);
+            Cerrar.Cargar();
             Pestañas.Cargar();
             ScrollViewers.Cargar();
             Interfaz.Menu.Cargar();
+            Battlenet.Cargar();
             EAPlay.Cargar();
             Ubisoft.Cargar();
             EpicGames.Cargar();
@@ -40,6 +43,15 @@ namespace Steam_Connect
             ObjetosVentana.menuItemMenu = menuItemMenu;
             ObjetosVentana.nvItemOpciones = nvItemOpciones;
             ObjetosVentana.nvItemSubirArriba = nvItemSubirArriba;
+            ObjetosVentana.gridCierre = gridCierre;
+
+            //-------------------------------------------------------------------
+
+            ObjetosVentana.botonCerrarAppSi = botonCerrarAppSi;
+            ObjetosVentana.botonCerrarAppNo = botonCerrarAppNo;
+            ObjetosVentana.iconoCerrarAppAzar = iconoCerrarAppAzar;
+            ObjetosVentana.tbCerrarAppAzar = tbCerrarAppAzar;
+            ObjetosVentana.botonCerrarAppAzar = botonCerrarAppAzar;
 
             //-------------------------------------------------------------------
 
@@ -86,7 +98,8 @@ namespace Steam_Connect
 
             //-------------------------------------------------------------------
 
-            ObjetosVentana.spBattlenetJuegosInstaladosMensaje = spBattlenetJuegosInstaladosMensaje;
+            ObjetosVentana.gridBattlenetMensajeSiJuegos = gridBattlenetMensajeSiJuegos;
+            ObjetosVentana.botonBattlenetCerrarMensajeSiJuegos = botonBattlenetCerrarMensajeSiJuegos;
             ObjetosVentana.svBattlenetJuegosInstalados = svBattlenetJuegosInstalados;
             ObjetosVentana.prBattlenetJuegosInstalados = prBattlenetJuegosInstalados;
             ObjetosVentana.gvBattlenetJuegosInstalados = gvBattlenetJuegosInstalados;
@@ -117,7 +130,9 @@ namespace Steam_Connect
 
             //-------------------------------------------------------------------
 
+            ObjetosVentana.spOpcionesBotones = spOpcionesBotones;
             ObjetosVentana.svOpciones = svOpciones;
+            ObjetosVentana.spOpcionesPestañas = spOpcionesPestanas;
             ObjetosVentana.cbOpcionesIdioma = cbOpcionesIdioma;
             ObjetosVentana.cbOpcionesPantalla = cbOpcionesPantalla;
             ObjetosVentana.botonOpcionesLimpiar = botonOpcionesLimpiar;
@@ -133,6 +148,15 @@ namespace Steam_Connect
             public static MenuFlyout menuItemMenu { get; set; }
             public static NavigationViewItem nvItemOpciones { get; set; }
             public static NavigationViewItem nvItemSubirArriba { get; set; }
+            public static Grid gridCierre { get; set; }
+
+            //-------------------------------------------------------------------
+
+            public static Button botonCerrarAppSi { get; set; }
+            public static Button botonCerrarAppNo { get; set; }
+            public static FontAwesome iconoCerrarAppAzar { get; set; }
+            public static TextBlock tbCerrarAppAzar { get; set; }
+            public static Button botonCerrarAppAzar { get; set; }
 
             //-------------------------------------------------------------------
 
@@ -179,7 +203,8 @@ namespace Steam_Connect
 
             //-------------------------------------------------------------------
 
-            public static StackPanel spBattlenetJuegosInstaladosMensaje { get; set; }
+            public static Grid gridBattlenetMensajeSiJuegos { get; set; }
+            public static Button botonBattlenetCerrarMensajeSiJuegos { get; set; }
             public static ScrollViewer svBattlenetJuegosInstalados { get; set; }
             public static ProgressRing prBattlenetJuegosInstalados { get; set; }
             public static AdaptiveGridView gvBattlenetJuegosInstalados { get; set; }
@@ -210,7 +235,9 @@ namespace Steam_Connect
 
             //-------------------------------------------------------------------
 
+            public static StackPanel spOpcionesBotones { get; set; }
             public static ScrollViewer svOpciones { get; set; }
+            public static StackPanel spOpcionesPestañas { get; set; }
             public static ComboBox cbOpcionesIdioma { get; set; }
             public static ComboBox cbOpcionesPantalla { get; set; }
             public static Button botonOpcionesLimpiar { get; set; }

@@ -9,7 +9,7 @@
   <Identity
     Name="d8eb2a34-7c60-4bf3-abe4-fe1d0015ee86"
     Publisher="CN=C91088FC-231C-4E13-86D1-5F9658173DA7"
-    Version="1.0.1.0" />
+    Version="1.0.2.0" />
 
   <Properties>
     <DisplayName>pepeizq&apos;s Steam Connect</DisplayName>
