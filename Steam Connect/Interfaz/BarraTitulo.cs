@@ -16,7 +16,7 @@ namespace Interfaz
             if (AppWindowTitleBar.IsCustomizationSupported() == true)
             {
                 IntPtr ventanaInt = WindowNative.GetWindowHandle(ventana);
-                WindowId ventanaID = Win32Interop.GetWindowIdFromWindow(ventanaInt);
+                Microsoft.UI.WindowId ventanaID = Win32Interop.GetWindowIdFromWindow(ventanaInt);
                 
                 AppWindow ventanaTitulo = AppWindow.GetFromWindowId(ventanaID);
                 ventanaTitulo.TitleBar.ExtendsContentIntoTitleBar = true;

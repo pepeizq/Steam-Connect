@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>Steam_Connect</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -21,6 +21,7 @@
     <AppInstallerUri>https://pepeizqapps.com/descargas/steamconnect</AppInstallerUri>
     <HoursBetweenUpdateChecks>16632</HoursBetweenUpdateChecks>
     <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\connect_logo.png" />
@@ -55,8 +56,8 @@
     <PackageReference Include="Crc32C.NET" Version="1.0.5" />
     <PackageReference Include="FontAwesome6.Fonts.WinUI" Version="2.5.1" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.2" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221109.1" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240428000" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.3233" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="ValveKeyValue" Version="0.8.2.162" />
     <Manifest Include="$(ApplicationManifest)" />
